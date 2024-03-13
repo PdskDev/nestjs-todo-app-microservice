@@ -5,7 +5,6 @@ import { ITodoService } from "./todoservice.interface";
 @Injectable()
 export class TodoService implements ITodoService{
     
-    
     private storage: Todo[] = [];
 
     findAll(): Todo[] {
@@ -13,7 +12,7 @@ export class TodoService implements ITodoService{
     }
 
     create(todo: Todo): void {
-        const currentTodoTotal = Math.max(...this.storage.map((t: Todo) => t.id));
+        const currentTodoTotal = Math.max(...this.storage.map((t: Todo) => t.id), 0);
         todo.id = currentTodoTotal + 1;
         this.storage.push(todo);
     }
